@@ -12,12 +12,23 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    //TODO : UNCOMMENT WHEN Meme OBJECT IS CREATED
     var memes = [Meme]()
+    var images = [UIImage]()
 
+    func createDefaultMemes(){
+        for x in 1...2 {
+            let newMeme = Meme(bottomText: "bottom text", topText: "top text", originalImage: UIImage(named: "meme\(x)")!, memedImage: UIImage(named: "meme\(x)")!)
+            memes.append(newMeme)
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if memes.count == 0 {
+            createDefaultMemes()
+        }
+        
         return true
     }
 

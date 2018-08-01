@@ -24,14 +24,24 @@ class MemeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return memes.count
     }
-
+//
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100
+//    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell", for: indexPath) as! MemeTableViewCell
         let meme = memes[(indexPath as NSIndexPath).row]
         cell.memeImageView?.image = meme.getMemedImage()
+        
+        let frontText = String(meme.getTopText().prefix(8))
+        let backText = String(meme.getBottomText().suffix(8))
+        
+        let fullText = "\(frontText)...\(backText)"
+        
+        cell.memeTextView.text = fullText
         return cell
     }
 
