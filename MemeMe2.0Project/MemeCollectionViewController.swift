@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+// TODO:
+// WRITE SOME TESTS!!!!!!!
 class MemeCollectionViewController: UICollectionViewController {
     
     var memes = [Meme]()
@@ -21,12 +22,14 @@ class MemeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         memes = appDelegate.memes
+        let screenWidth: CGFloat = UIScreen.main.bounds.width
     }
     
     func openCreateMemeView() {
         self.dismiss(animated: true, completion: nil)
     }
  
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let meme = memes[(indexPath as NSIndexPath).row]

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+// TODO:
+// WRITE SOME TESTS!!!!!!!
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,15 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var images = [UIImage]()
 
     func createDefaultMemes(){
-        for x in 1...2 {
-            let newMeme = Meme(bottomText: "bottom text", topText: "top text", originalImage: UIImage(named: "meme\(x)")!, memedImage: UIImage(named: "meme\(x)")!)
-            memes.append(newMeme)
-        }
+        //for x in 1...2 {
+        let newMeme1 = Meme(bottomText: "BOTTOM", topText: "TOO", originalImage: UIImage(named: "meme1")!, memedImage: UIImage(named: "meme1")!)
+        let newMeme2 = Meme(bottomText: "OH BOY OH BOY", topText: "OH BOY OH BOY", originalImage: UIImage(named: "meme2")!, memedImage: UIImage(named: "meme2")!)
+        memes.append(newMeme1)
+        memes.append(newMeme2)
+        //}
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        application.isStatusBarHidden = true
+
         if memes.count == 0 {
             createDefaultMemes()
         }

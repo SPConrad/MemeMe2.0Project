@@ -7,8 +7,17 @@
 //
 
 import UIKit
-
+// TODO:
+// WRITE SOME TESTS!!!!!!!
 class MemeCollectionViewCell: UICollectionViewCell
 {
-    @IBOutlet weak var memeImageView: UIImageView!    
+    static let ident = "MemeCollectionViewCell"
+    
+    @IBOutlet weak var memeImageView: UIImageView!
+    
+    lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 }

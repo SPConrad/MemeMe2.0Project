@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+// TODO:
+// WRITE SOME TESTS!!!!!!!
 class MemeTextFieldDelegate: NSObject, UITextFieldDelegate {
 
     private var defaultText = ""

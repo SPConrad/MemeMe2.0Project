@@ -10,7 +10,8 @@ import UIKit
 import AVKit
 import NotificationCenter
 import Photos
-
+// TODO:
+// WRITE SOME TESTS!!!!!!!
 class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -25,7 +26,8 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var albumButton: UIBarButtonItem!
     
-    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     // Constraint for imageViewBottom
     @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
@@ -75,6 +77,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
             self.view.updateConstraints()
         }
     }
+    
     // SetupTextFields
     // If textField array is empty, populate it
     // Assign appropriate textFieldDelegate, default attributes, placeholder text, and alignment
@@ -117,7 +120,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
             shareButton.isEnabled = false
         }
     }
-    
+        
     func showAlert(title: String, message: String){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
@@ -170,6 +173,11 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
             }
         }
     
+    func resetView(){
+        imageView.image = nil
+        topTextField.text = topTextField.placeholder
+        bottomTextField.text = bottomTextField.placeholder
+    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -182,25 +190,27 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func generateMemedImage() -> UIImage {
-        self.toolbar.isHidden = true
-        self.navigationController?.isToolbarHidden = true
-        self.view.updateConstraints()
+        
+        self.toolBar.isHidden = true
+        self.navBar.isHidden = true
+        imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
+        imageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
+        imageView.updateConstraints()
         
         UIGraphicsBeginImageContext(self.view.safeAreaLayoutGuide.layoutFrame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        view.drawHierarchy(in: self.view.safeAreaLayoutGuide.layoutFrame, afterScreenUpdates: true)
+        
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        
-        self.toolbar.isHidden = false
-        self.navigationController?.isToolbarHidden = false
-        self.view.updateConstraints()
+        self.toolBar.isHidden = false
+        self.navBar.isHidden = false
+        imageView.topAnchor.constraint(equalTo: self.navBar.bottomAnchor)
+        imageView.bottomAnchor.constraint(equalTo: self.toolBar.bottomAnchor)
+        imageView.updateConstraints()
         
         return memedImage
     }
     
-    
-    
-
     @IBAction func share(_ sender: Any) {
         if let originalImage = imageView.image {
             let memedImage = generateMemedImage()
@@ -224,7 +234,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
 
     @IBAction func cancel(_ sender: Any) {
-
+        resetView()
     }
     
     @IBAction func openAlbum(_ sender: Any) {
