@@ -7,8 +7,7 @@
 //
 
 import UIKit
-// TODO:
-// WRITE SOME TESTS!!!!!!!
+
 class MemeCollectionViewController: UICollectionViewController {
     
     var memes = [Meme]()
@@ -33,7 +32,7 @@ class MemeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let meme = memes[(indexPath as NSIndexPath).row]
-        cell.memeImageView?.image = meme.getMemedImage()
+        cell.imageView.image = meme.getMemedImage()
         
         return cell
     }

@@ -7,17 +7,26 @@
 //
 
 import UIKit
-// TODO:
-// WRITE SOME TESTS!!!!!!!
+
 class MemeCollectionViewCell: UICollectionViewCell
 {
     static let ident = "MemeCollectionViewCell"
     
-    @IBOutlet weak var memeImageView: UIImageView!
-    
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    func setup(){
+        self.contentView.addSubview(imageView)
+        
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
+            ])
+    }
 }

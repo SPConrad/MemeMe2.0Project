@@ -234,7 +234,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
 
     @IBAction func cancel(_ sender: Any) {
-        resetView()
+        self.dismiss(sender)
     }
     
     @IBAction func openAlbum(_ sender: Any) {

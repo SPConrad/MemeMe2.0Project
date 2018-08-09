@@ -70,6 +70,7 @@ class SentItemsCombinedViewController: UIViewController, UITableViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let meme = memes[(indexPath as NSIndexPath).row]
+        cell.setup()
         cell.imageView.image = meme.getMemedImage()
         
         return cell
@@ -87,6 +88,6 @@ class SentItemsCombinedViewController: UIViewController, UITableViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController
         detailController.meme = memes[(indexPath as NSIndexPath).row]
-        self.tabBarController!.show(detailController, sender: nil)
+        self.show(detailController, sender: nil)
     }
 }
