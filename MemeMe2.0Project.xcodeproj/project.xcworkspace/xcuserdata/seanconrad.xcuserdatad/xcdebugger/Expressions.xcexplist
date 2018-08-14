@@ -35,5 +35,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "SentItemsCombinedViewController.viewWillAppear(_:):SentItemsCombinedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "memes">
+            </PersistentString>
+            <PersistentString
+               value = "appDelegate.memes">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

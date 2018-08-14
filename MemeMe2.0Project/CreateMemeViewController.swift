@@ -190,7 +190,6 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func generateMemedImage() -> UIImage {
-        
         self.toolBar.isHidden = true
         self.navBar.isHidden = true
         imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
@@ -228,13 +227,15 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
                 if success {
                     let meme = Meme(bottomText: self.bottomTextField.text!, topText: self.topTextField.text!, originalImage: originalImage, memedImage: memedImage)
                     self.appDelegate.memes.append(meme)
+                    self.resetView()
+                    self.dismiss(sender)
                 }
             }
         }
     }
 
     @IBAction func cancel(_ sender: Any) {
-        self.dismiss(sender)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func openAlbum(_ sender: Any) {

@@ -16,22 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var memes = [Meme]()
     var images = [UIImage]()
 
-    func createDefaultMemes(){
-        //for x in 1...2 {
-        let newMeme1 = Meme(bottomText: "BOTTOM", topText: "TOO", originalImage: UIImage(named: "meme1")!, memedImage: UIImage(named: "meme1")!)
-        let newMeme2 = Meme(bottomText: "OH BOY OH BOY", topText: "OH BOY OH BOY", originalImage: UIImage(named: "meme2")!, memedImage: UIImage(named: "meme2")!)
-        memes.append(newMeme1)
-        memes.append(newMeme2)
-        //}
-    }
+//    func createDefaultMemes(){
+//        //for x in 1...2 {
+//        let newMeme1 = Meme(bottomText: "BOTTOM", topText: "TOO", originalImage: UIImage(named: "meme1")!, memedImage: UIImage(named: "meme1")!)
+//        let newMeme2 = Meme(bottomText: "OH BOY OH BOY", topText: "OH BOY OH BOY", originalImage: UIImage(named: "meme2")!, memedImage: UIImage(named: "meme2")!)
+//        memes.append(newMeme1)
+//        memes.append(newMeme2)
+//        //}
+//    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         application.isStatusBarHidden = true
 
-        if memes.count == 0 {
-            createDefaultMemes()
-        }
+//        if memes.count == 0 {
+//            createDefaultMemes()
+//        }
         
         return true
     }
