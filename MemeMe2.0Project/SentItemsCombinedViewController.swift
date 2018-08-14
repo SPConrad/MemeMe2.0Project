@@ -127,16 +127,24 @@ class SentItemsCombinedViewController: UIViewController, UITableViewDataSource, 
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func openEditViewController(meme: Meme) {
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController
-        detailController.meme = memes[(indexPath as NSIndexPath).row]
-        self.show(detailController, sender: nil)
+        detailController.meme = meme
+        self.show(detailController, sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        openEditViewController(meme: memes[(indexPath as NSIndexPath).row])
+//        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController
+//        detailController.meme = memes[(indexPath as NSIndexPath).row]
+//        self.show(detailController, sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController
-        detailController.meme = memes[(indexPath as NSIndexPath).row]
-        self.show(detailController, sender: nil)
+        openEditViewController(meme: memes[(indexPath as NSIndexPath).row])
+//        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController
+//        detailController.meme = memes[(indexPath as NSIndexPath).row]
+//        self.show(detailController, sender: self)
     }
     
     @IBAction func tableViewButtonPress(_ sender: Any) {

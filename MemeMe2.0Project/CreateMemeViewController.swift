@@ -100,25 +100,29 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        subscribeToKeyboardNotifications()
+        if meme != nil {
+            imageView.image = meme.getOriginalImage()
+            topTextField.text = meme.getTopText()
+            bottomTextField.text = meme.getBottomText()
+            enableCancelShareButtons()
+        } else if imageView.image != nil {
+            enableCancelShareButtons()
+        } else {
+            shareButton.isEnabled = false
+            cancelButton.isEnabled = false
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        subscribeToKeyboardNotifications()
         setupTextFields()
         checkForMediaPermissions()
-        if meme != nil {
-            imageView.image = meme.getOriginalImage()
-            topTextField.text = meme.getTopText()
-            bottomTextField.text = meme.getBottomText()
-            shareButton.isEnabled = true
-        } else {
-            shareButton.isEnabled = false
-        }
+       
     }
         
     func showAlert(title: String, message: String){
@@ -233,6 +237,11 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
             }
         }
     }
+    
+    public func enableCancelShareButtons(){
+        shareButton.isEnabled = true
+        cancelButton.isEnabled = true
+    }
 
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -250,8 +259,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imageView.image = image
             imageView.contentMode = .scaleAspectFill
-            shareButton.isEnabled = true
-            cancelButton.isEnabled = true
+            enableCancelShareButtons()
         }
         picker.dismiss(animated: true, completion: nil)
     }
