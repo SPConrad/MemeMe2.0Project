@@ -171,6 +171,55 @@
             </objects>
             <point key="canvasLocation" x="1943" y="-1164"/>
         </scene>
+        <!--MemeDetailViewController-->
+        <scene sceneID="fEn-Q7-BTS">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" title="MemeDetailViewController" id="iUQ-Nt-faT" customClass="MemeDetailViewController" customModule="MemeMe2_0Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sYq-bS-dmR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hp1-Fj-vxI">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem leftItemsSupplementBackButton="YES" id="MND-Vk-Vgd">
+                                        <barButtonItem key="backBarButtonItem" title="Sent Items" id="tXH-mX-MFh"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Sent Items" id="8hx-1k-3bt">
+                                            <connections>
+                                                <action selector="returnToSent:" destination="iUQ-Nt-faT" id="crX-S0-Iz0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JOC-Hc-qTH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hp1-Fj-vxI" firstAttribute="trailing" secondItem="JOC-Hc-qTH" secondAttribute="trailing" id="9UM-Fz-Jby"/>
+                            <constraint firstItem="Hp1-Fj-vxI" firstAttribute="top" secondItem="9TY-in-yKS" secondAttribute="top" id="M0X-gA-cqs"/>
+                            <constraint firstItem="9TY-in-yKS" firstAttribute="bottom" secondItem="JOC-Hc-qTH" secondAttribute="bottom" id="OGT-9D-q3k"/>
+                            <constraint firstItem="Hp1-Fj-vxI" firstAttribute="leading" secondItem="JOC-Hc-qTH" secondAttribute="leading" id="Q8F-DU-iMk"/>
+                            <constraint firstItem="9TY-in-yKS" firstAttribute="trailing" secondItem="JOC-Hc-qTH" secondAttribute="trailing" id="Tna-LR-iMg"/>
+                            <constraint firstItem="JOC-Hc-qTH" firstAttribute="top" secondItem="Hp1-Fj-vxI" secondAttribute="bottom" id="dDV-GM-caY"/>
+                            <constraint firstItem="JOC-Hc-qTH" firstAttribute="leading" secondItem="9TY-in-yKS" secondAttribute="leading" id="heH-FI-C5O"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9TY-in-yKS"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="memeImageView" destination="JOC-Hc-qTH" id="zXh-TJ-nK8"/>
+                        <outlet property="navItem" destination="MND-Vk-Vgd" id="cEk-8Y-1b3"/>
+                        <outlet property="navigationItem" destination="MND-Vk-Vgd" id="a4n-Sw-Edg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WI7-sQ-SX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2335" y="-454"/>
+        </scene>
     </scenes>
     <resources>
         <image name="collection" width="30" height="30"/>
